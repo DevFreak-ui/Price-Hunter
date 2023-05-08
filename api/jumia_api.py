@@ -3,12 +3,12 @@
  - Define two(2) functions
  - Each function makes a request to each server
     - Jumia Server
-    - Kiiku Server
+    - Tonaton Server
 
- - Make the soup
+ - Prepare the soup
  - Get search item from user
- - Get the product element
- - for each product save product info
+ - Access product element from the parser
+ - for each product, define a dictionary & store product info
 
     * Title
     * Price
@@ -33,7 +33,7 @@ def jumia(search_word):
     soup = BeautifulSoup(response.content, "lxml")
     products = soup.find_all("a", {"class": "core"})[:10]
 
-    items_jumia = {}
+    jumia_items = {}
     counter = 0
     for product in products:
         prod_desc = {
@@ -42,10 +42,10 @@ def jumia(search_word):
             "prd_link": product['href'],
             "thumbnail_link": product.find('img', {'class': 'img'})['data-src']
         }
-        items_jumia[counter] = prod_desc
+        jumia_items[counter] = prod_desc
         counter += 1
 
-    json_string = json.dumps(items_jumia, indent=4)
+    json_string = json.dumps(jumia_items, indent=4)
     print(json_string)
 
 
