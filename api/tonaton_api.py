@@ -7,10 +7,12 @@
 
 from bs4 import BeautifulSoup
 import requests
-import json
+# import json
 
 
 def tonaton(search_word):
+    search_word = "+".join(search_word.split(" "))
+    
     headers = {"Usesr-Agent": "Mozilla/5.0"}
     base_url = f'https://tonaton.com/search?query={search_word}'
     response = requests.get(base_url, headers=headers)
@@ -30,8 +32,6 @@ def tonaton(search_word):
         }
         product_list[counter] = product_desc
         counter += 1
-    json_string = json.dumps(product_list, indent=4)
-    print(json_string)
+    
+    return product_list
 
-
-tonaton("table")

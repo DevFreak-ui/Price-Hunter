@@ -92,7 +92,7 @@
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div> -->
 
-                            <form action="" method="get" class="search d-flex align-items-center">
+                            <form action="{{ url_for('query') }}" method="get" class="search d-flex align-items-center">
                                 <input type="text" name="search_word" placeholder='Search Item eg; "gaming mouse"'>
                                 <button type="submit" class="primary-btn btn-round">Search</button>
                             </form>
@@ -106,7 +106,7 @@
 
 
     <!-- Product Section Begin -->
-    <section class="spad">
+    <section class="spad" id="showcase">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -120,69 +120,45 @@
             <div class="row product__filter justify-content-center">
 
                 <div class="col-md-6 jumia">
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix new-arrivals">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="{{ url_for('static', filename='img/product-1.jpg') }}" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+
+                    {% if jumia_products %}
+                        {% for key, value in jumia_products.items() %}
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix new-arrivals">
+                                <div class="product__item">
+                                    <img class="product__item__pic set-bg" src='{{ value.thumbnail_link }}' />
+                                    <div class="product__item__text">
+                                        <h6>{{ value.title }}</h6>
+                                        <h5>{{ value.price }}</h5>
+                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix new-arrivals">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="img/product-1.jpg" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix new-arrivals">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="img/product-1.jpg" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
+                    {% else %}
+                        <h4>Nothing to display</h4>
+                    {% endif %}
+
                 </div>
 
                 <div class="col-md-6 tonaton">
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix hot-sales">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="{{ url_for('static', filename='img/product-1.jpg') }}" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+
+                    {% if jumia_products %}
+                        {% for key, value in tonaton_products.items() %}
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix hot-sales">
+                            <div class="product__item">
+                                <img class="product__item__pic set-bg" src="{{ value.thumbnail_link }}" />
+                                <div class="product__item__text">
+                                    <h6>{{ value.title }}</h6>
+                                    <h5>{{ value.price }}</h5>
+                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix hot-sales">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="img/product-1.jpg" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-md-10 col-sm-6 mix hot-sales">
-                        <div class="product__item">
-                            <img class="product__item__pic set-bg" src="img/product-1.jpg" />
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <h5>$67.24</h5>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
+                    {% else %}
+                        
+                    {% endif %}
+                    
                 </div>
 
             </div>

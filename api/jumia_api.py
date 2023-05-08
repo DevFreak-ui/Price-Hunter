@@ -19,13 +19,12 @@
 
 from bs4 import BeautifulSoup
 import requests
-import json
-
-item = input("Enter search item: ").lower().split(" ")
-search_item = "+".join(item)
+# import json
 
 
-def jumia(search_word):
+def jumia(search_item):
+    search_word = "+".join(search_item.split(" "))
+
     headers = {"User-Agent": "mozilla/5.0."}
     url = f"https://www.jumia.com.gh/catalog/?q={search_word}&sort=rating#catalog-listing"
     response = requests.get(url, headers=headers)
@@ -37,17 +36,15 @@ def jumia(search_word):
     counter = 0
     for product in products:
         prod_desc = {
-            "title": product.find('h3', {'class': 'name'}).text,
-            "price": product.find('div', {'class': 'prc'}).text,
+            "title": product.find('h3', {'class': 'name'}).text.strip(),
+            "price": product.find('div', {'class': 'prc'}).text.strip(),
             "prd_link": product['href'],
             "thumbnail_link": product.find('img', {'class': 'img'})['data-src']
         }
         jumia_items[counter] = prod_desc
         counter += 1
 
-    json_string = json.dumps(jumia_items, indent=4)
-    print(json_string)
+    # json_string = json.dumps(jumia_items, indent=4)
+    return jumia_items
 
-
-jumia(search_item)
 
