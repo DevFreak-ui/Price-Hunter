@@ -38,7 +38,7 @@ def jumia(search_item):
         prod_desc = {
             "title": product.find('h3', {'class': 'name'}).text.strip(),
             "price": product.find('div', {'class': 'prc'}).text.strip(),
-            "prd_link": product['href'],
+            "prod_link": product['href'],
             "thumbnail_link": product.find('img', {'class': 'img'})['data-src']
         }
         jumia_items[counter] = prod_desc

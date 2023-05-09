@@ -129,7 +129,7 @@
                                     <div class="product__item__text">
                                         <h6>{{ value.title }}</h6>
                                         <h5>{{ value.price }}</h5>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <a href="https://www.jumia.com.gh{{ value.prod_link }}" target="_blank" class="add-cart">+ Buy</a>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                 <div class="product__item__text">
                                     <h6>{{ value.title }}</h6>
                                     <h5>{{ value.price }}</h5>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="https://tonaton.com{{ value.prod_link }}" target="_blank" class="add-cart">+ Buy</a>
                                 </div>
                             </div>
                         </div>
@@ -164,47 +164,104 @@
             </div>
             <div class="row spad">
                 <div>
-                    <p>Search other trusted websites for <strong>"Search Word"</strong></p>
+                    <p>Search other trusted websites for <strong>
+                        {% if search_word %}
+                            "{{ search_word }}"
+                        {% else %}
+                            "Search Word"
+                        {% endif %}
+                    </strong></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3 mix">
-                    <div class="product__item border rounded align-items-center px-2 py-4">
-                        <img class="other_site set-bg" src="{{ url_for('static', filename='img/kiiku.png') }}" />
-                        <div class="product__item__text">
-                            <h6>Kikuu</h6>
-                            <p>Search: <strong>""</strong></p>
+
+            {% if search_word %}
+                <div class="row">
+                    <div class="col-md-3 mix">
+                        <a href="https://www.kikuu.com.gh/search/result?kw={{ search_word }}" target="_blank">
+                            <div class="product__item border rounded align-items-center px-2 py-4">
+                                <img class="other_site set-bg" src="{{ url_for('static', filename='img/kiiku.png') }}" />
+                                <div class="product__item__text">
+                                    <h6>Kikuu</h6>
+                                    <p>Search: <strong>"{{ search_word }}"</strong></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 mix">
+                        <a href="https://melcom.com/catalogsearch/result/?q={{ search_word }}"  target="_blank">
+                            <div class="product__item border rounded align-items-center px-2 py-4">
+                                <img class="other_site set-bg" src="{{ url_for('static', filename='img/melcom_logo.jpg') }}" />
+                                <div class="product__item__text">
+                                    <!-- <h6>Melcom</h6> -->
+                                    <p>Search: <strong>"{{ search_word }}"</strong></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 mix">
+                        <a href="https://jiji.com.gh/search?query={{ search_word }}" target="_blank">
+                            <div class="product__item border rounded align-items-center px-2 py-4">
+                                <img class="other_site set-bg" src="{{ url_for('static', filename='img/jiji.png') }}" />
+                                <div class="product__item__text">
+                                    <h6>Jiji</h6>
+                                    <p>Search: <strong>"{{ search_word }}"</strong></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 mix">
+                        <a href="https://www.africakart.com/?s={{ search_word }}&post_type=product" target="_blank">
+                            <div class="product__item border rounded align-items-center px-2 py-4">
+                                <img class="other_site set-bg" src="{{ url_for('static', filename='img/africa-kart.png') }}" />
+                                <div class="product__item__text">
+                                    <h6>Africakart</h6>
+                                    <p>Search: <strong>"{{ search_word }}"</strong></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div> 
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-3 mix">
+                        <div class="product__item border rounded align-items-center px-2 py-4">
+                            <img class="other_site set-bg" src="{{ url_for('static', filename='img/kiiku.png') }}" />
+                            <div class="product__item__text">
+                                <h6>Kikuu</h6>
+                                <p>Search: <strong>""</strong></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix">
-                    <div class="product__item border rounded align-items-center px-2 py-4">
-                        <img class="other_site set-bg" src="{{ url_for('static', filename='img/melcom_logo.jpg') }}" />
-                        <div class="product__item__text">
-                            <h6>Melcom</h6>
-                            <p>Search: <strong>" "</strong></p>
+                    <div class="col-md-3 mix">
+                        <div class="product__item border rounded align-items-center px-2 py-4">
+                            <img class="other_site set-bg" src="{{ url_for('static', filename='img/melcom_logo.jpg') }}" />
+                            <div class="product__item__text">
+                                <h6>Melcom</h6>
+                                <p>Search: <strong>""</strong></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix">
-                    <div class="product__item border rounded align-items-center px-2 py-4">
-                        <img class="other_site set-bg" src="{{ url_for('static', filename='img/jiji.png') }}" />
-                        <div class="product__item__text">
-                            <h6>Jiji</h6>
-                            <p>Search: <strong>" "</strong></p>
+                    <div class="col-md-3 mix">
+                        <div class="product__item border rounded align-items-center px-2 py-4">
+                            <img class="other_site set-bg" src="{{ url_for('static', filename='img/jiji.png') }}" />
+                            <div class="product__item__text">
+                                <h6>Jiji</h6>
+                                <p>Search: <strong>""</strong></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix">
-                    <div class="product__item border rounded align-items-center px-2 py-4">
-                        <img class="other_site set-bg" src="{{ url_for('static', filename='img/africa-kart.png') }}" />
-                        <div class="product__item__text">
-                            <h6>Africakart</h6>
-                            <p>Search: <strong>" "</strong></p>
+                    <div class="col-md-3 mix">
+                        <div class="product__item border rounded align-items-center px-2 py-4">
+                            <img class="other_site set-bg" src="{{ url_for('static', filename='img/africa-kart.png') }}" />
+                            <div class="product__item__text">
+                                <h6>Africakart</h6>
+                                <p>Search: <strong>""</strong></p>
+                            </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
-            </div>
+            {% endif %}
+
         </div>
     </section>
     <!-- Product Section End -->
@@ -246,6 +303,7 @@
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
