@@ -5,18 +5,15 @@
 
 This is a Python web project that uses Flask web framework to scrape data from Jumia and Tonaton websites, make comparisons of product before proceeding to purchasing site. The project includes two custom API files (jumia_api.py and tonaton_api.py) that make requests to the two servers, parse the response and retrieve data based on a user-defined search keyword.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
--   Python 3.6 or higher
--   Flask 1.1.2 or higher
--   Requests library 2.25.1 or higher
--   BeautifulSoup4 library 4.9.3 or higher
+-   Python 3.6
+-   Flask 1.1.2
+-   Requests library
+-   BeautifulSoup4 library 4.9.3
 
-### Installing
+### Installation
 
 1.  Clone the repository to your local machine
 1.  Navigate to the root directory of the project in your terminal or command prompt.
@@ -59,35 +56,9 @@ The `tonaton_api.py` file defines a `tonaton` function that takes a search term 
 2.  The application will retrieve and display up to 10 results each from Jumia and Tonaton websites based on the search query
 
 
-## Project Structure
-
-├── api
-│   ├── jumia_api.py
-│   └── tonaton_api.py
-├── main.py
-├── requirements.txt
-├── static
-│   ├── css
-│   │   └── style.css
-│   ├── images
-│   │   └── logo.png
-│   └── js
-│       └── script.js
-└── templates
-	└── index.html
-		
-
-
-The project consists of the following files and folders:
-
--   `main.py`: The main Python file that defines the Flask application and routes.
--   `api/`: A folder containing the Python files that define the Jumia and Tonaton API calls.
--   `templates/`: A folder containing the HTML templates used to render the web pages.
--   `static/`: A folder containing the static files used by the application, such as CSS, JavaScript, and images.
-
 ## Authors
 
--   [Prince Mireku](https://github.com/DevFreak-ui)
+-   [Prince Mireku](mailto:mirekuprince66@gmail.com)
 
 ## Acknowledgments
 
