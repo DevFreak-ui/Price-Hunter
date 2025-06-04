@@ -23,3 +23,6 @@ def query():
         jumia_call = jumia_api.jumia(search_word)
         tonaton_call = tonaton_api.tonaton(search_word)
         return render_template('index.html', jumia_products=jumia_call, tonaton_products=tonaton_call, search_word=search_word)
+
+if __name__ == '__main__':
+    app.run(debug=True)
